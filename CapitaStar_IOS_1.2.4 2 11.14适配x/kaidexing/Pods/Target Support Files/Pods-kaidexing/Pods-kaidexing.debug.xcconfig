@@ -1,0 +1,11 @@
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking" "$PODS_CONFIGURATION_BUILD_DIR/ActionSheetPicker-3.0" "$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack" "$PODS_CONFIGURATION_BUILD_DIR/JSONModel" "$PODS_CONFIGURATION_BUILD_DIR/Mixpanel" "$PODS_CONFIGURATION_BUILD_DIR/ReactiveCocoa" "${PODS_ROOT}/Bugly" "${PODS_ROOT}/Pingpp/lib/Channels/Alipay"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Bugly" "${PODS_ROOT}/Headers/Public/Pingpp"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Pingpp/lib/Channels/Alipay" $(inherited) "${PODS_ROOT}/Pingpp/lib" $(inherited) "${PODS_ROOT}/Pingpp/lib/Dependencies/Network"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking/AFNetworking.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack/CocoaLumberjack.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/JSONModel/JSONModel.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Mixpanel/Mixpanel.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/ReactiveCocoa/ReactiveCocoa.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Bugly" -isystem "${PODS_ROOT}/Headers/Public/Pingpp"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"pingpp+alipay" -l"pingpp+network" -l"pingppcore" -l"stdc++" -l"z" -framework "AFNetworking" -framework "ActionSheetPicker_3_0" -framework "AlipaySDK" -framework "Bugly" -framework "CFNetwork" -framework "CocoaLumberjack" -framework "CoreLocation" -framework "CoreMotion" -framework "CoreTelephony" -framework "JSONModel" -framework "Mixpanel" -framework "ReactiveCocoa" -framework "Security" -framework "SystemConfiguration"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
