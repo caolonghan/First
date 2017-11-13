@@ -14,5 +14,8 @@
 
 @interface GoodsDetailViewController : MyNBTabController<ConfirmPayDelegate,AlimsgDelegata>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
+
 @property (strong, nonatomic) NSString* path;
 @end

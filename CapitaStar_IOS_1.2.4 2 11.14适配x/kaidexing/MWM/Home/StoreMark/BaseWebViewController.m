@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _webView = [[UIWebView alloc] init];
-    _webView.frame = CGRectMake(0, NAV_HEIGHT, SCREEN_FRAME.size.width, SCREEN_FRAME.size.height - NAV_HEIGHT);
+    _webView.frame = CGRectMake(0, NAV_HEIGHT, SCREEN_FRAME.size.width, SCREEN_FRAME.size.height - NAV_HEIGHT-BAR_HEIGHT);
     [self.view addSubview:_webView];
     _webView.scrollView.bounces=NO;
     self.webView.scrollView.bouncesZoom=NO;

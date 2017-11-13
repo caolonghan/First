@@ -33,7 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _topHeight.constant = STATUS_BAR_HEIGHT;
+    _bottomHeight.constant = BAR_HEIGHT;
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie* cookie in [storage cookies])
     {
