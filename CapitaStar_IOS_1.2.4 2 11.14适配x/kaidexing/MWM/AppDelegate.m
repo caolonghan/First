@@ -33,10 +33,10 @@ RTLbsMapManager *_mapManager;
 
 @end
 
+//模拟器运行
 #if TARGET_OS_SIMULATOR
 @implementation EasyARSceneController
 @end
-//模拟器运行
 @implementation EasyARScene
 - (void)setFPS:(int)fps{}
 - (void)loadJavaScript:(NSString *)uriPath{}

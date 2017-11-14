@@ -407,6 +407,7 @@
 		75310A371FA20CCD007560B2 /* scene_kaide.js in Resources */ = {isa = PBXBuildFile; fileRef = 75310A1B1FA20CC9007560B2 /* scene_kaide.js */; };
 		753428931FADAE8E002B3130 /* RtmapRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75FA35D01FADA6A10028D9FB /* RtmapRes.bundle */; };
 		753428941FADAEA7002B3130 /* RTImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 75FA35CF1FADA6290028D9FB /* RTImages.bundle */; };
+		755328FA1FBA822500478220 /* ARShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 755328F91FBA822500478220 /* ARShowViewController.m */; };
 		75959D2A1FB00EE800B48E5E /* libARSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75959D291FB00EC900B48E5E /* libARSDK.a */; };
 		75DC89141FA1E589003C52A4 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DC89131FA1E589003C52A4 /* iCarousel.m */; };
 		75DC89301FA1E595003C52A4 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DC89181FA1E595003C52A4 /* MASCompositeConstraint.m */; };
@@ -450,7 +451,6 @@
 		75E004EE1FB2E2B7002C48FD /* scroll_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E004CF1FB2E2B7002C48FD /* scroll_image.png */; };
 		75E004EF1FB2E2B7002C48FD /* scroll_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E004D01FB2E2B7002C48FD /* scroll_image@2x.png */; };
 		75E004F01FB2E2B7002C48FD /* scroll_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E004D11FB2E2B7002C48FD /* scroll_image@3x.png */; };
-		75E004F51FB2FE62002C48FD /* ARShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E004F41FB2FE62002C48FD /* ARShowViewController.m */; };
 		75E0088A1FB820E1002C48FD /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75E008891FB820E1002C48FD /* Launch Screen.storyboard */; };
 		75ED023E1FA6D0D600E3B4F5 /* RTMARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ED01F91FA6D0D600E3B4F5 /* RTMARViewController.m */; };
 		75ED023F1FA6D0D600E3B4F5 /* ADScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ED01FD1FA6D0D600E3B4F5 /* ADScroll.m */; };
@@ -1794,6 +1794,7 @@
 		75310A1A1FA20CC9007560B2 /* scene.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = scene.js; sourceTree = "<group>"; };
 		75310A1B1FA20CC9007560B2 /* scene_kaide.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = scene_kaide.js; sourceTree = "<group>"; };
 		7551B9461FA31AF100583B95 /* jingling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jingling.png; sourceTree = "<group>"; };
+		755328F91FBA822500478220 /* ARShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARShowViewController.m; sourceTree = "<group>"; };
 		75959D291FB00EC900B48E5E /* libARSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libARSDK.a; sourceTree = "<group>"; };
 		75DC89121FA1E589003C52A4 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		75DC89131FA1E589003C52A4 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -1854,7 +1855,6 @@
 		75E004D01FB2E2B7002C48FD /* scroll_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll_image@2x.png"; sourceTree = "<group>"; };
 		75E004D11FB2E2B7002C48FD /* scroll_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll_image@3x.png"; sourceTree = "<group>"; };
 		75E004F11FB2F92E002C48FD /* ARShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARShowViewController.h; sourceTree = "<group>"; };
-		75E004F41FB2FE62002C48FD /* ARShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARShowViewController.m; sourceTree = "<group>"; };
 		75E008891FB820E1002C48FD /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		75ED01F81FA6D0D600E3B4F5 /* RTMARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMARViewController.h; sourceTree = "<group>"; };
 		75ED01F91FA6D0D600E3B4F5 /* RTMARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMARViewController.m; sourceTree = "<group>"; };
@@ -2982,7 +2982,7 @@
 				3F8DEF541F18C3BD007D5EB4 /* ARWebViewController.h */,
 				3F8DEF551F18C3BD007D5EB4 /* ARWebViewController.m */,
 				75E004F11FB2F92E002C48FD /* ARShowViewController.h */,
-				75E004F41FB2FE62002C48FD /* ARShowViewController.m */,
+				755328F91FBA822500478220 /* ARShowViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6861,7 +6861,7 @@
 				9C41C5141DC9DD1B00E7B642 /* MJRefreshNormalHeader.m in Sources */,
 				6370775E1E9B397200C9C268 /* CreameVC.m in Sources */,
 				639F4F0D1ED8D44B00AE01E4 /* MallInfoModel.m in Sources */,
-				75E004F51FB2FE62002C48FD /* ARShowViewController.m in Sources */,
+				755328FA1FBA822500478220 /* ARShowViewController.m in Sources */,
 				75ED023F1FA6D0D600E3B4F5 /* ADScroll.m in Sources */,
 				A205E54D1CE3618200C46747 /* StarScoreTView.m in Sources */,
 				63ADC8C01C1131D400308022 /* GDataXMLElement-Extras.m in Sources */,

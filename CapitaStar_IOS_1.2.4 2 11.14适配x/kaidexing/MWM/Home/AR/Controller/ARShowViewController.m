@@ -57,6 +57,7 @@ NSString* CloudSecret = @"5f5cb639b392e2ca545ebb77562a424e10e6b652ba3ec277ca658b
 @property (nonatomic, strong) UIView *BGView;
 @property (nonatomic, strong) UIImageView *contentImageView;
 @property (nonatomic, strong) UIImageView *btn_continue;
+@property (nonatomic, assign) BOOL isShowContent;
 
 @property (nonatomic, strong) UIImageView *hintImageView;
 @property (nonatomic, strong) UIImageView *knowImageView;
@@ -85,6 +86,7 @@ NSString* CloudSecret = @"5f5cb639b392e2ca545ebb77562a424e10e6b652ba3ec277ca658b
     self.couldOpen = YES;
     self.elveID = @"1";
     self.takePhotoTimes = 0;
+    self.isShowContent = YES;
     
     __weak ARShowViewController *myself = self;
     [ARScene setMessageReceiver:^(NSString *name, NSArray<NSString *> *params) {
@@ -212,7 +214,7 @@ NSString* CloudSecret = @"5f5cb639b392e2ca545ebb77562a424e10e6b652ba3ec277ca658b
     UITapGestureRecognizer* resetTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resetAction)];
     self.btn_reset.userInteractionEnabled = YES;
     [self.btn_reset addGestureRecognizer:resetTap];
-   //12 [self.view addSubview:self.btn_reset];
+//    [self.view addSubview:self.btn_reset];
     
     UIImage* takePhotoImage = [UIImage imageNamed:@"AR_takePhoto"];
     self.btn_takePhoto = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - takePhotoImage.size.width / 2, self.view.frame.size.height - takePhotoImage.size.height - 60, takePhotoImage.size.width, takePhotoImage.size.height)];
@@ -301,9 +303,8 @@ NSString* CloudSecret = @"5f5cb639b392e2ca545ebb77562a424e10e6b652ba3ec277ca658b
     __weak ARShowViewController* weak_self = self;
     if ([name isEqualToString:@"request:JsNativeBinding.AnimationEnd"]) {
         NSLog(@"response:JsNativeBinding.AnimationEnd %@",array);
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-        NSString* animationStr = [defaults objectForKey:@"ARAnimationTimes"];
-        if (![animationStr isEqualToString:@"more"]) {
+        
+        if (weak_self.isShowContent) {
             weak_self.BGView.hidden = NO;
             weak_self.contentImageView.hidden = NO;
             weak_self.btn_continue.hidden = NO;
@@ -333,16 +334,9 @@ NSString* CloudSecret = @"5f5cb639b392e2ca545ebb77562a424e10e6b652ba3ec277ca658b
     }else if ([name isEqualToString:@"request:JsNativeBinding.FinishLoading"]) {
         weak_self.loadAnimationView.hidden = YES;
         
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-        NSString* timeStr = [defaults objectForKey:@"ARTimes"];
-        if (![timeStr isEqualToString:@"more"]) {
-            weak_self.BGView.hidden = NO;
-            weak_self.hintImageView.hidden = NO;
-            weak_self.knowImageView.hidden = NO;
-        }else {
-            
-            [ARScene sendMessage:@"request:NativeJsBinding.OpenClick" params:@[]];
-        }
+        weak_self.BGView.hidden = NO;
+        weak_self.hintImageView.hidden = NO;
+        weak_self.knowImageView.hidden = NO;
         
         weak_self.btn_reset.hidden = NO;
         weak_self.btn_change.hidden = NO;
@@ -527,19 +521,17 @@ NSString* CloudSecret = @"5f5cb639b392e2ca545ebb77562a424e10e6b652ba3ec277ca658b
 }
 
 - (void)continueToTakePhoto {
+    
     self.BGView.hidden = YES;
     self.contentImageView.hidden = YES;
     self.btn_continue.hidden = YES;
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"more" forKey:@"ARAnimationTimes"];
 }
 
 - (void)know {
+    
     self.BGView.hidden = YES;
     self.hintImageView.hidden = YES;
     self.knowImageView.hidden = YES;
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"more" forKey:@"ARTimes"];
     [ARScene sendMessage:@"request:NativeJsBinding.OpenClick" params:@[]];
 }
 
@@ -572,39 +564,33 @@ NSString* CloudSecret = @"5f5cb639b392e2ca545ebb77562a424e10e6b652ba3ec277ca658b
     uname(&systemInfo);
     NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
     if ([deviceString isEqualToString:@"iPhone10,3"] || [deviceString isEqualToString:@"iPhone10,6"]) {
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        
         UIImage* image = [self customSnapShot];
         self.takePhotoTimes++;
         self.screenImageView.hidden = NO;
         self.screenImageView.image = image;
         self.btn_close.hidden = NO;
         self.btn_savePhoto.hidden = NO;
+        self.hudImageView.hidden = NO;
         
-        NSString* takePhotoStr = [defaults objectForKey:@"ARTakePhotoTimes"];
-        if (![takePhotoStr isEqualToString:@"more"]) {
-            self.hudImageView.hidden = NO;
-        }
     }else {
         __weak ARShowViewController* weak_self = self;
         [ARScene snapshot:^(UIImage *image) {
             
-            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:@"more" forKey:@"ARAnimationTimes"];
             weak_self.takePhotoTimes++;
             weak_self.screenImageView.hidden = NO;
             weak_self.screenImageView.image = image;
             weak_self.btn_close.hidden = NO;
             weak_self.btn_savePhoto.hidden = NO;
+            weak_self.hudImageView.hidden = NO;
             
-            NSString* takePhotoStr = [defaults objectForKey:@"ARTakePhotoTimes"];
-            if (![takePhotoStr isEqualToString:@"more"]) {
-                weak_self.hudImageView.hidden = NO;
-            }
+            
         } failed:^(NSString *msg) {
             NSLog(@"msg %@",msg);
         }];
     }
     
+    self.isShowContent = NO;
 }
 
 - (UIImage *)customSnapShot {
@@ -628,8 +614,8 @@ NSString* CloudSecret = @"5f5cb639b392e2ca545ebb77562a424e10e6b652ba3ec277ca658b
 }
 
 - (void) close {
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"more" forKey:@"ARTakePhotoTimes"];
+    
+    self.isShowContent = YES;
     self.screenImageView.image = nil;
     self.screenImageView.hidden = YES;
     self.btn_close.hidden = YES;
@@ -648,8 +634,7 @@ NSString* CloudSecret = @"5f5cb639b392e2ca545ebb77562a424e10e6b652ba3ec277ca658b
     } else {
         NSLog(@"save to System photo album Success");
         
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:@"more" forKey:@"ARTakePhotoTimes"];
+        self.isShowContent = YES;
         [self showHint:@"成功保存到相册"];
         
         if (self.couldOpen) {
